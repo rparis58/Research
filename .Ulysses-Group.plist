@@ -5,10 +5,107 @@
 	<key>resolutionData</key>
 	<dict>
 		<key>sheetClusters</key>
-		<dict/>
+		<dict>
+			<key>Initial.R</key>
+			<dict>
+				<key>lastModification</key>
+				<real>484715405.07423002</real>
+				<key>version</key>
+				<dict>
+					<key>fa1df969091cd7fb84d029e978001951ca24cb2ad18c22a334a1e54df50017d9</key>
+					<integer>6</integer>
+				</dict>
+			</dict>
+			<key>README.md</key>
+			<dict>
+				<key>lastModification</key>
+				<real>484715405.07423002</real>
+				<key>version</key>
+				<dict>
+					<key>fa1df969091cd7fb84d029e978001951ca24cb2ad18c22a334a1e54df50017d9</key>
+					<integer>6</integer>
+				</dict>
+			</dict>
+			<key>RP_notes.md</key>
+			<dict>
+				<key>explicitUnassignment</key>
+				<true/>
+				<key>firstUnassignment</key>
+				<real>484715441.65005398</real>
+				<key>lastModification</key>
+				<real>484715441.65005398</real>
+				<key>version</key>
+				<dict>
+					<key>fa1df969091cd7fb84d029e978001951ca24cb2ad18c22a334a1e54df50017d9</key>
+					<integer>9</integer>
+				</dict>
+			</dict>
+			<key>detect_outliers.R</key>
+			<dict>
+				<key>lastModification</key>
+				<real>484715405.074229</real>
+				<key>version</key>
+				<dict>
+					<key>fa1df969091cd7fb84d029e978001951ca24cb2ad18c22a334a1e54df50017d9</key>
+					<integer>6</integer>
+				</dict>
+			</dict>
+			<key>intro_multidplyr.R</key>
+			<dict>
+				<key>lastModification</key>
+				<real>484715405.07423103</real>
+				<key>version</key>
+				<dict>
+					<key>fa1df969091cd7fb84d029e978001951ca24cb2ad18c22a334a1e54df50017d9</key>
+					<integer>6</integer>
+				</dict>
+			</dict>
+			<key>rPref_intro.R</key>
+			<dict>
+				<key>lastModification</key>
+				<real>484715405.07423103</real>
+				<key>version</key>
+				<dict>
+					<key>fa1df969091cd7fb84d029e978001951ca24cb2ad18c22a334a1e54df50017d9</key>
+					<integer>6</integer>
+				</dict>
+			</dict>
+			<key>yes_it_does.md</key>
+			<dict>
+				<key>lastModification</key>
+				<real>484715405.07423002</real>
+				<key>version</key>
+				<dict>
+					<key>fa1df969091cd7fb84d029e978001951ca24cb2ad18c22a334a1e54df50017d9</key>
+					<integer>6</integer>
+				</dict>
+			</dict>
+		</dict>
 	</dict>
 	<key>sheetClusters</key>
-	<array/>
+	<array>
+		<array>
+			<string>RP_notes.md</string>
+		</array>
+		<array>
+			<string>detect_outliers.R</string>
+		</array>
+		<array>
+			<string>README.md</string>
+		</array>
+		<array>
+			<string>Initial.R</string>
+		</array>
+		<array>
+			<string>yes_it_does.md</string>
+		</array>
+		<array>
+			<string>rPref_intro.R</string>
+		</array>
+		<array>
+			<string>intro_multidplyr.R</string>
+		</array>
+	</array>
 	<key>storeFormatVersion</key>
 	<integer>1</integer>
 	<key>versioning</key>
@@ -16,7 +113,7 @@
 		<key>sheetClusters</key>
 		<dict>
 			<key>fa1df969091cd7fb84d029e978001951ca24cb2ad18c22a334a1e54df50017d9</key>
-			<integer>4</integer>
+			<integer>9</integer>
 		</dict>
 	</dict>
 </dict>
