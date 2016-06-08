@@ -116,3 +116,82 @@ SetNodeStyle(acme$IT, fillcolor = "LightBlue", penwidth = "5px")
 plot(acme)
 
 plot(as.dendrogram(CreateRandomTree(nodes = 20)), center = TRUE)
+
+
+### CONVERT TO JSON
+require(data.tree)
+
+#create an example tree
+contacts <- Node$new("contacts")
+contacts$type <- "root"
+jack <- contacts$AddChild("c1")
+jack$fullName <- "Jack Miller"
+jack$isGoodCustomer <- FALSE
+jack$type <- "customer"
+jill <- contacts$AddChild("c2")
+jill$fullName <- "Jill Hampsted"
+jill$isGoodCustomer <- TRUE
+jill$type <- "customer"
+o1 <- jill$AddChild("o1")
+o1$type <- "order"
+o1$item <- "Shoes"
+o1$amount <- 29.95
+
+#This function will convert the Node objects to environments
+EnvConverter <- function(node) {
+  #We take env and not list, because list has value semantics (just try it with list!)
+  me <- new.env()
+  if (node$type == "customer") {
+    #here you decide which fields you'll want in the JSON
+    #you could also format, transform, etc.
+    me$fullName <- node$fullName
+    me$isGoodCustomer <- node$isGoodCustomer
+  } else if (node$type == "order") {
+    me$item <- node$item
+    me$amount <- node$amount
+  } else {
+    me$name <- node$name
+  }
+  
+  if (!node$isRoot) {
+    node$parent$json[[node$name]] <- me
+  }
+  node$json <- me
+  #dummy return (not needed)
+  return (node$name)
+}
+
+#iterate through the tree and call EnvConverter
+contacts$Get(EnvConverter)
+
+#needed to convert the above created environment to a list
+ConvertNestedEnvironmentToList <- function(env) {
+  out <- as.list(env)
+  lapply(out, function(x) if (is.environment(x)) ConvertNestedEnvironmentToList(x) else x)
+}
+
+mylist <- ConvertNestedEnvironmentToList(contacts$json)
+
+library(rjson)
+
+#convert the list to a JSON, using the package of your choice
+in_json_fmt <- toJSON(mylist)
+
+
+#this has now become much simpler - use the jsonlite or rjson package
+data(acme)
+l <- as.list(acme)
+
+# library(rjson)
+library(jsonlite)
+j <- toJSON(l)
+cat(j)
+prettify(j)   # gives a pretty output!
+
+#### also have a go from jsonedit  html widget
+require(listviewer)
+jsonedit(l)
+
+
+#as a side note: you can also convert a list to a Node:
+a2 <- as.Node(l)

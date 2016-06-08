@@ -1,0 +1,359 @@
+---
+title: "spatialRecology (R)Markdown Introduction"
+output:
+  html_document:
+    collapsed: no
+    css: css/scholmd-heuristically-latest.min.css
+    fig_caption: yes
+    highlight: pygments
+    number_sections: yes
+    theme: readable
+    toc: yes
+    toc_float: yes
+  pdf_document:
+    fig_caption: yes
+    toc: yes
+  word_document:
+    toc: yes
+---
+
+# YAML metadata block
+The entire layout and behaviour of the document can (and must) be specified in YAML metadata block.
+It starts with  a line of three hyphens (`---`) at the top and a line of three hyphens (`---`) or three dots (`...`) at the bottom. 
+For detailed information please check the [rmarkdown reference guide](http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf).
+
+For example, The YAML metadata block for this document looks like:
+
+``` markdown
+---
+title: "Ecomod (R)Markdown"
+output:
+  html_document:
+    collapsed: no
+    css: css/scholmd-heuristically-latest.min.css
+    highlight: pygments
+    number_sections: yes
+    theme: readable
+    toc: yes
+    toc_float: yes
+---
+```
+
+
+# Typography 
+
+## Headings
+
+Headings are constructed with a `#` for each level:
+
+``` markdown
+# Heading 
+## Heading 
+### Heading 
+#### Heading 
+##### Heading 
+###### Heading 
+```
+
+Renders to:
+![](headers.png)
+
+## Emphasis {.tabset}
+
+### Bold
+``` markdown
+**rendered as bold text**
+```
+renders to:
+
+**rendered as bold text**
+
+### Italics
+``` markdown
+*rendered as italicized text*
+```
+
+renders to:
+
+_rendered as italicized text_
+
+### strikethrough
+``` markdown
+~~Strike through this text.~~
+```
+Renders to:
+
+~~Strike through this text.~~
+
+## Blockquotes
+``` markdown
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+```
+
+Renders to:
+
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+
+## Lists {.tabset}
+### Unordered
+You may use any of the following symbols to denote bullets for each list item:
+
+```markdown
+* valid bullet
+- valid bullet
++ valid bullet
+```
+
+``` markdown
++ Lorem ipsum dolor sit amet
++ Consectetur adipiscing elit
++ Integer molestie lorem at massa
++ Facilisis in pretium nisl aliquet
++ Nulla volutpat aliquam velit
+    - Phasellus iaculis neque
+    - Purus sodales ultricies
+    - Vestibulum laoreet porttitor sem
+    - Ac tristique libero volutpat at
++ Faucibus porta lacus fringilla vel
++ Aenean sit amet erat nunc
++ Eget porttitor lorem
+```
+Renders to:
+
++ Lorem ipsum dolor sit amet
++ Consectetur adipiscing elit
++ Integer molestie lorem at massa
++ Facilisis in pretium nisl aliquet
++ Nulla volutpat aliquam velit
+    - Phasellus iaculis neque
+    - Purus sodales ultricies
+    - Vestibulum laoreet porttitor sem
+    - Ac tristique libero volutpat at
++ Faucibus porta lacus fringilla vel
++ Aenean sit amet erat nunc
++ Eget porttitor lorem
+
+### Ordered
+``` markdown
+1. Lorem ipsum dolor sit amet
+2. Consectetur adipiscing elit
+3. Integer molestie lorem at massa
+4. Facilisis in pretium nisl aliquet
+5. Nulla volutpat aliquam velit
+6. Faucibus porta lacus fringilla vel
+7. Aenean sit amet erat nunc
+8. Eget porttitor lorem
+```
+Renders to:
+
+1. Lorem ipsum dolor sit amet
+2. Consectetur adipiscing elit
+3. Integer molestie lorem at massa
+4. Facilisis in pretium nisl aliquet
+5. Nulla volutpat aliquam velit
+6. Faucibus porta lacus fringilla vel
+7. Aenean sit amet erat nunc
+8. Eget porttitor lorem
+
+**TIP**: If you just use `1.` for each number, Markdown will automatically number each item. For example:
+
+``` markdown
+1. Lorem ipsum dolor sit amet
+1. Consectetur adipiscing elit
+1. Integer molestie lorem at massa
+1. Facilisis in pretium nisl aliquet
+1. Nulla volutpat aliquam velit
+1. Faucibus porta lacus fringilla vel
+1. Aenean sit amet erat nunc
+1. Eget porttitor lorem
+```
+
+Renders to:
+
+1. Lorem ipsum dolor sit amet
+2. Consectetur adipiscing elit
+3. Integer molestie lorem at massa
+4. Facilisis in pretium nisl aliquet
+5. Nulla volutpat aliquam velit
+6. Faucibus porta lacus fringilla vel
+7. Aenean sit amet erat nunc
+8. Eget porttitor lorem
+
+## Code {.tabset}
+
+### Inline code
+Wrap inline snippets of code with `` ` ``.
+
+For example, `setwd()` should be wrapped as "inline".
+
+### Block code "fences"
+
+Use "fences"  ```` ``` ```` to block in multiple lines of code. 
+
+<pre>
+``` r
+foo <- t.test(x,y)
+```
+</pre>
+
+
+``` r
+foo <- t.test(x,y)
+```
+
+## Math
+Anything between two $ characters will be treated as TeX math. 
+``` markdown
+$8 + 8 = \frac{32}{2}$
+```
+
+Renders to:
+
+$8 + 8 = \frac{32}{2}$
+
+# R Code Chunks {.tabset}
+
+## General
+
+R code chunks can be used as a means render R output into documents or to simply display code for illustration.
+
+<pre class="markdown"><code>&#96;&#96;&#96;{r}
+summary(cars)
+&#96;&#96;&#96;
+</code></pre>
+
+Renders to:
+
+```{r}
+summary(cars)
+```
+
+## Inline R Code
+Two plus two equals <tt>&#96;r 2 + 2&#96;</tt>.
+
+Renders to:
+
+Two plus two equals `r 2 + 2`.
+
+## Rcpp Code Chunks
+You can also create code chunks that define functions in C++ using [Rcpp Attributes](https://cran.rstudio.com/web/packages/Rcpp/vignettes/Rcpp-attributes.pdf). This is accomplished using the `engine = 'Rcpp'` chunk option.
+
+<pre class="markdown"><code>&#96;&#96;&#96;{r engine='Rcpp'}
+#include <Rcpp.h>
+
+// [[Rcpp::export]]
+int fibonacci(const int x) {
+    if (x == 0 || x == 1) return(x);
+    return (fibonacci(x - 1)) + fibonacci(x - 2);
+}
+&#96;&#96;&#96;
+</code></pre>
+
+
+# Referencing {.tabset}
+
+## Specifying a Bibliography
+Specify a bibliography file using the bibliography metadata field in the YAML metadata section:
+``` markdown
+---
+title: "Sample Document"
+output: html_document
+bibliography: bibliography.bib
+---
+```
+
+The *.bib file has to be placed in the folder of the .Rmd file, otherwise a path must be specified:
+
+``` markdown
+---
+title: "Sample Document"
+output: html_document
+bibliography: source/of/bibliography.bib
+---
+```
+
+## Bibliography placement
+``` markdown
+last paragraph...
+
+# References
+```
+
+Renders to:
+![Optional outline view that enables quick navigation across larger documents](references.png)
+
+## Citation Syntax
+``` markdown
+Blah blah [@smith04; @doe99].
+```
+
+or as in-text citation:
+
+``` markdown
+@doe99 says blah blah.
+```
+
+... both render to:
+
+Blah blah (Smith 1986; Doe 1999). Doe (1999) says blah blah.
+
+## Citation Styles
+
+Specify the citation style with a .csl file from [CitationStyles.org](http://citationstyles.org/).
+
+``` markdown
+---
+title: "Sample Document"
+output: html_document
+bibliography: bibliography.bib
+csl: ecologicalmodelling.csl
+---
+```
+
+# Figures and Tables {.tabset}
+## Figures
+``` markdown
+![This is the caption](/source/of/image.png)
+```
+
+You can also specify figure sizes on a per-chunk basis. For example, to create a figure that is smaller than the default (7x5) you can do this:
+
+<pre class="markdown"><code>&#96;&#96;&#96;{r, fig.width=6}
+plot(x,y)
+&#96;&#96;&#96;
+</code></pre>
+
+## Tables
+``` markdown
+Table Header  | Second Header
+------------- | -------------
+Table Cell    | Cell 2
+Cell 3        | Cell 4 
+```
+
+Renders to:
+
+Table Header  | Second Header
+------------- | -------------
+Table Cell    | Cell 2
+Cell 3        | Cell 4 
+
+... tables can easily be created with [Markdown Tables Generator](http://www.tablesgenerator.com/markdown_tables).
+
+# Tips
+![Optional outline view that enables quick navigation across larger documents](fold_out.png)
+
+
+# Package recommandations
+* [rmdformats](https://github.com/juba/rmdformats) <br>
+  Provides ready-to-use HTML output formats and templates for RMarkdown documents. 
+* [servr](https://github.com/yihui/servr) <br>
+  A simple HTTP server to serve files under a given directory based on the httpuv package.
+  Run   ``` servr::rmdv2()  ```, click on the html file and you have a live preview of your changes.
+* [editR](https://github.com/yihui/servr) <br>
+  A Rmarkdown editor (written in shiny) with instant preview. 
+
+# More information
+* http://rmarkdown.rstudio.com/
+* http://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf
+* http://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf

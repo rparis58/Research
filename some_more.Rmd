@@ -1,0 +1,16 @@
+---
+title: "some_more"
+author: "Richard Paris"
+date: "7 June 2016"
+output: html_document
+---
+We see that this is an intercross with `r nind(sug)` individuals.
+There are `r nphe(sug)` phenotypes, and genotype data at
+`r totmar(sug)` markers across the `r nchr(sug)` autosomes.  The genotype
+data is quite complete.
+
+Use `plot()` to get a summary plot of the data.
+
+```{r summary_plot, fig.height=8}
+plot(sug)
+```

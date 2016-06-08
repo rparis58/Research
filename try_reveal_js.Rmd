@@ -1,0 +1,49 @@
+---
+title: "my_reveal_js"
+author: "Richard Paris"
+date: "8 June 2016"
+output: 
+  revealjs::revealjs_presentation:
+    theme: sky
+    highlight: pygments
+    transition: fade
+    center: true
+    incremental: true
+---
+## Embed a web page as a background {data-background-iframe="https://www.google.co.nz"}
+
+# In the morning
+
+## Getting up {data-background="score-2.png"}
+
+- Turn off alarm
+- Get out of bed
+
+## Breakfast {data-background=#ff0000}
+
+> - Eat eggs
+> - Drink coffee
+
+# In the evening
+
+## Dinner
+
+- Eat spaghetti
+- Drink wine
+
+## Going to sleep
+
+- Get in bed
+- Count sheep
+
+## Use a zoom transition {data-transition="zoom"}
+
+>- this is very cool
+
+## Slide in, Fade out {data-transition="fade-in slide-out"}
+
+>- some good stuff
+
+## last slide
+
+>- this is the end
